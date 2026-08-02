@@ -1,0 +1,170 @@
+[
+  {
+    "port_number": "070801",
+    "border": "Canadian Border",
+    "port_name": "Alexandria Bay",
+    "crossing_name": "Thousand Islands Bridge",
+    "hours": "24 hrs/day",
+    "date": "8/2/2026",
+    "time": "06:24:07",
+    "port_status": "Open",
+    "commercial_vehicle_lanes": {
+      "maximum_lanes": "5",
+      "standard_lanes": {
+        "update_time": "At 7:00 am EDT",
+        "operational_status": "no delay",
+        "delay_minutes": "3",
+        "lanes_open": "1"
+      },
+      "FAST_lanes": {
+        "update_time": "",
+        "operational_status": "N/A",
+        "delay_minutes": "",
+        "lanes_open": ""
+      }
+    },
+    "passenger_vehicle_lanes": {
+      "maximum_lanes": "8",
+      "standard_lanes": {
+        "update_time": "At 7:00 am EDT",
+        "operational_status": "no delay",
+        "delay_minutes": "3",
+        "lanes_open": "1"
+      },
+      "NEXUS_SENTRI_lanes": {
+        "update_time": "",
+        "operational_status": "Lanes Closed",
+        "delay_minutes": "",
+        "lanes_open": ""
+      },
+      "ready_lanes": {
+        "update_time": "",
+        "operational_status": "N/A",
+        "delay_minutes": "",
+        "lanes_open": ""
+      }
+    },
+    "pedestrian_lanes": {
+      "maximum_lanes": "N/A",
+      "standard_lanes": {
+        "update_time": "",
+        "operational_status": "N/A",
+        "delay_minutes": "",
+        "lanes_open": ""
+      },
+      "ready_lanes": {
+        "update_time": "",
+        "operational_status": "N/A",
+        "delay_minutes": "",
+        "lanes_open": ""
+      }
+    },
+    "construction_notice": ""
+  },
+  {
+    "port_number": "300401",
+    "border": "Canadian Border",
+    "port_name": "Blaine",
+    "crossing_name": "Pacific Highway",
+    "hours": "24 hrs/day",
+    "date": "8/2/2026",
+    "time": "03:24:07",
+    "port_status": "Open",
+    "commercial_vehicle_lanes": {
+      "maximum_lanes": "3",
+      "standard_lanes": {
+        "update_time": "At 3:00 am PDT",
+        "operational_status": "no delay",
+        "delay_minutes": "5",
+        "lanes_open": "1"
+      },
+      "FAST_lanes": {
+        "update_time": "",
+        "operational_status": "Lanes Closed",
+        "delay_minutes": "",
+        "lanes_open": ""
+      }
+    },
+    "passenger_vehicle_lanes": {
+      "maximum_lanes": "7",
+      "standard_lanes": {
+        "update_time": "At 3:00 am PDT",
+        "operational_status": "no delay",
+        "delay_minutes": "5",
+        "lanes_open": "1"
+      },
+      "NEXUS_SENTRI_lanes": {
+        "update_time": "",
+        "operational_status": "Lanes Closed",
+        "delay_minutes": "",
+        "lanes_open": ""
+      },
+      "ready_lanes": {
+        "update_time": "",
+        "operational_status": "Lanes Closed",
+        "delay_minutes": "",
+        "lanes_open": ""
+      }
+    },
+    "pedestrian_lanes": {
+      "maximum_lanes": "N/A",
+      "standard_lanes": {
+        "update_time": "",
+        "operational_status": "N/A",
+        "delay_minutes": "",
+        "lanes_open": ""
+      },
+      "ready_lanes": {
+        "update_time": "",
+        "operational_status": "N/A",
+        "delay_minutes": "",
+        "lanes_open": ""
+      }
+    },
+    "construction_notice": ""
+  },
+  {
+    "port_number": "300402",
+    "border": "Canadian Border",
+    "port_name": "Blaine",
+    "crossing_name": "Peace Arch",
+    "hours": "24 hrs/day",
+    "date": "8/2/2026",
+    "time": "03:24:07",
+    "port_status": "Open",
+    "commercial_vehicle_lanes": {
+      "maximum_lanes": "N/A",
+      "standard_lanes": {
+        "update_time": "",
+        "operational_status": "N/A",
+        "delay_minutes": "",
+        "lanes_open": ""
+      },
+      "FAST_lanes": {
+        "update_time": "",
+        "operational_status": "N/A",
+        "delay_minutes": "",
+        "lanes_open": ""
+      }
+    },
+    "passenger_vehicle_lanes": {
+      "maximum_lanes": "10",
+      "standard_lanes": {
+        "update_time": "At 3:00 am PDT",
+        "operational_status": "no delay",
+        "delay_minutes": "5",
+        "lanes_open": "1"
+      },
+      "NEXUS_SENTRI_lanes": {
+        "update_time": "",
+        "operational_status": "Lanes Closed",
+        "delay_minutes": "",
+        "lanes_open": ""
+      },
+      "ready_lanes": {
+        "update_time": "",
+        "operational_status": "Lanes Closed",
+        "delay_minutes": "",
+        "lanes_open": ""
+      }
+    },

@@ -1,0 +1,6 @@
+pandas
+numpy
+scikit-learn
+mlflow
+
+# Microsoft Fabric provides Spark runtime dependencies

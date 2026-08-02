@@ -1,0 +1,110 @@
+{
+    "name": "bwt_ingestion_pipeline",
+    "objectId": "<PIPELINE_OBJECT_ID>",
+    "properties": {
+        "activities": [
+            {
+                "name": "Get_BWT_Data",
+                "type": "WebActivity",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "0.12:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "typeProperties": {
+                    "method": "GET",
+                    "relativeUrl": "https://bwt.cbp.gov/api/waittimes"
+                },
+                "externalReferences": {
+                    "connection": "<CONNECTION_ID>"
+                }
+            },
+            {
+                "name": "Copy data1",
+                "type": "Copy",
+                "dependsOn": [
+                    {
+                        "activity": "Get_BWT_Data",
+                        "dependencyConditions": [
+                            "Completed"
+                        ]
+                    }
+                ],
+                "policy": {
+                    "timeout": "0.12:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "typeProperties": {
+                    "source": {
+                        "type": "RestSource",
+                        "httpRequestTimeout": "00:01:40",
+                        "requestInterval": "00.00:00:00.010",
+                        "requestMethod": "GET",
+                        "paginationRules": {
+                            "supportRFC5988": "true"
+                        },
+                        "datasetSettings": {
+                            "annotations": [],
+                            "type": "RestResource",
+                            "typeProperties": {
+                                "relativeUrl": "https://bwt.cbp.gov/api/waittimes"
+                            },
+                            "schema": [],
+                            "externalReferences": {
+                                "connection": "<CONNECTION_ID>"
+                            }
+                        }
+                    },
+                    "sink": {
+                        "type": "JsonSink",
+                        "storeSettings": {
+                            "type": "AzureBlobStorageWriteSettings"
+                        },
+                        "formatSettings": {
+                            "type": "JsonWriteSettings"
+                        },
+                        "datasetSettings": {
+                            "annotations": [],
+                            "linkedService": {
+                                "name": "BWT_Lakehouse",
+                                "properties": {
+                                    "annotations": [],
+                                    "type": "Lakehouse",
+                                    "typeProperties": {
+                                        "workspaceId": "<WORKSPACE_ID>",
+                                        "artifactId": "<LAKEHOUSE_ARTIFACT_ID>",
+                                        "rootFolder": "Files"
+                                    }
+                                }
+                            },
+                            "type": "Json",
+                            "typeProperties": {
+                                "location": {
+                                    "type": "LakehouseLocation",
+                                    "fileName": {
+                                        "value": "@concat(formatDateTime(utcNow(),'HH'), '.json')",
+                                        "type": "Expression"
+                                    },
+                                    "folderPath": {
+                                        "value": "@concat('raw/bwt/', formatDateTime(utcNow(),'yyyy'), '/', formatDateTime(utcNow(),'MM'), '/', formatDateTime(utcNow(),'dd'))",
+                                        "type": "Expression"
+                                    }
+                                }
+                            },
+                            "schema": {}
+                        }
+                    },
+                    "enableStaging": false
+                }
+            }
+        ],
+        "lastModifiedByObjectId": "<REDACTED_USER_ID>",
+        "lastPublishTime": "<REDACTED>"
+    }
+}

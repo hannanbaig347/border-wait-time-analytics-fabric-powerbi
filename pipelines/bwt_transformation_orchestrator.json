@@ -1,0 +1,64 @@
+{
+    "name": "bwt_transformation_orchestrator",
+    "objectId": "<PIPELINE_OBJECT_ID>",
+    "properties": {
+        "activities": [
+            {
+                "name": "Run_Silver_Gold_Processing",
+                "type": "TridentNotebook",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "0.12:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "typeProperties": {
+                    "notebookId": "<NOTEBOOK_ID_SILVER_GOLD>",
+                    "workspaceId": "<WORKSPACE_ID>"
+                }
+            },
+            {
+                "name": "Run_ML_Prediction",
+                "type": "TridentNotebook",
+                "dependsOn": [
+                    {
+                        "activity": "Wait1",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "policy": {
+                    "timeout": "0.12:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "typeProperties": {
+                    "notebookId": "<NOTEBOOK_ID_ML_PREDICTION>",
+                    "workspaceId": "<WORKSPACE_ID>"
+                }
+            },
+            {
+                "name": "Wait1",
+                "type": "Wait",
+                "dependsOn": [
+                    {
+                        "activity": "Run_Silver_Gold_Processing",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "typeProperties": {
+                    "waitTimeInSeconds": 120
+                }
+            }
+        ],
+        "lastModifiedByObjectId": "<REDACTED_USER_ID>",
+        "lastPublishTime": "<REDACTED>"
+    }
+}
