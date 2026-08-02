@@ -1,4 +1,4 @@
-![Executive Summary](Images/ExecutiveSummary.png)
+![Executive Summary](images/ExecutiveSummary.png)
 
 ![Microsoft Fabric](https://img.shields.io/badge/Microsoft%20Fabric-0078D4?style=for-the-badge&logo=microsoftazure&logoColor=white)
 ![Power BI](https://img.shields.io/badge/Power%20BI-F2C811?style=for-the-badge&logo=powerbi&logoColor=black)
@@ -56,7 +56,7 @@ However, raw operational data is rarely analysis-ready.
 
 The challenge was to build a reliable analytical foundation that converts this raw telemetry into meaningful business insights.
 
-![APIView.png](Images/APIView.png)
+![APIView.png](images/APIView.png)
 
 ---
 
@@ -151,7 +151,7 @@ Each JSON record represents a specific border entry point at a specific time.
 
 # Understanding the Data
 
-![APIView2.png](Images/APIView2.png)
+![APIView2.png](images/APIView2.png)
 
 ## Geography and Identity
 
@@ -254,17 +254,17 @@ Important telemetry fields include:
 
 Raw JSON files are processed through a structured transformation pipeline split into two orchestrated Spark notebooks (01_Silver_BWT_Processing and Gold layer transformation), chained together via a Fabric data orchestrator (bwt_transformation_orchestrator).
 
-![orchestrator.png](Images/orchestrator.png)
+![orchestrator.png](images/orchestrator.png)
 <br>
 
 ## Bronze Layer (Raw Zone)
-![Bronzelayer1.png](Images/Bronzelayer1.png)
+![Bronzelayer1.png](images/Bronzelayer1.png)
 <br>
 
 Stores raw, unedited hourly JSON snapshots (Files/raw/bwt/YYYY/MM/DD/HH.json).
 
 
-![Bronzelayer2.png](Images/Bronzelayer2.png)
+![Bronzelayer2.png](images/Bronzelayer2.png)
 
 The ingestion pipeline is operational and continuously capturing live CBP API telemetry through scheduled Microsoft Fabric pipeline runs every hour.
 
@@ -297,7 +297,7 @@ Example fields:
 - operational_status
 - wait_time_min
 
-![silverlayer.png](Images/silverlayer.png)
+![silverlayer.png](images/silverlayer.png)
 
 ---
 
@@ -305,13 +305,13 @@ Example fields:
 
 Transformed the cleaned data into a high-performance star schema consisting of 4 Dimension tables and 3 Fact tables:
 
-![goldlayer.png](Images/goldlayer.png)
+![goldlayer.png](images/goldlayer.png)
 
 ---
 
 # Data Model
 
-![starschema](Images/starschema.png)
+![starschema](images/starschema.png)
 
 The final model contains:
 
@@ -423,7 +423,7 @@ The model was evaluated using a 80/20 train-test split. As the pipeline ingests 
 
 The model demonstrates that historical traffic patterns contain useful predictive signals.
 
-![mlprediction](Images/mlprediction.png)
+![mlprediction](images/mlprediction.png)
 
 ---
 
@@ -447,7 +447,7 @@ The dashboard includes:
 - Lane performance comparison
 - Port outlier detection through scatter plot
 
-![ExecutiveSummary](Images/ExecutiveSummary.png)
+![ExecutiveSummary](images/ExecutiveSummary.png)
 
 ---
 
@@ -459,42 +459,58 @@ Includes:
 - Operational matrix
 - Hourly performance analysis
 
-![PortDeepDive](Images/PortDeepDive.png)
+![PortDeepDive](images/PortDeepDive.png)
 
 ---
+
 ## DAX Measures
 
-Organized into clean Display Folders for model hygiene:
+Organized into clean Display Folders for model hygiene.
 
-1. Base Metrics:
+### 1. Base Metrics
 
+```dax
 Total Snapshots = COUNTROWS('Fact_WaitTimes_Gold_New')
 
-Sensor Failure Rate = DIVIDE(CALCULATE([Total Snapshots], 'Fact_WaitTimes_Gold_New'[operational_status] = "Update Pending"), [Total Snapshots])
+Sensor Failure Rate = 
+DIVIDE(
+    CALCULATE([Total Snapshots], 'Fact_WaitTimes_Gold_New'[operational_status] = "Update Pending"),
+    [Total Snapshots]
+)
 
 Average Dwell Time = AVERAGE('Fact_WaitTimes_Gold_New'[wait_time_min])
 
 Max Bottleneck = MAX('Fact_WaitTimes_Gold_New'[wait_time_min])
+```
 
-2. Intelligence & Filters:
+### 2. Intelligence & Filters
 
-Commercial Dwell Time = CALCULATE([Average Dwell Time], 'Dim_Lane_New'[traffic_pillar] = "commercial_vehicle_lanes")
+```dax
+Commercial Dwell Time = 
+CALCULATE([Average Dwell Time], 'Dim_Lane_New'[traffic_pillar] = "commercial_vehicle_lanes")
 
-Critical Delay Count = CALCULATE(COUNTROWS('Fact_WaitTimes_Gold_New'), 'Fact_WaitTimes_Gold_New'[wait_time_min] > 60)
+Critical Delay Count = 
+CALCULATE(COUNTROWS('Fact_WaitTimes_Gold_New'), 'Fact_WaitTimes_Gold_New'[wait_time_min] > 60)
 
-Previous Day Dwell Time = CALCULATE([Average Dwell Time], PREVIOUSDAY('Dim_Date'[date]))
+Previous Day Dwell Time = 
+CALCULATE([Average Dwell Time], PREVIOUSDAY('Dim_Date'[date]))
 
-DoD Dwell Time Growth % = DIVIDE([Average Dwell Time] - [Previous Day Dwell Time], [Previous Day Dwell Time])
+DoD Dwell Time Growth % = 
+DIVIDE([Average Dwell Time] - [Previous Day Dwell Time], [Previous Day Dwell Time])
+```
 
-3. ML Evaluation:
+### 3. ML Evaluation
 
+```dax
 Predicted Dwell Time (RF) = AVERAGE('Fact_WaitTime_Predictions'[predicted_wait_time_min])
 
 Predicted Dwell Time (Baseline) = AVERAGE('Fact_WaitTime_Predictions'[lag_1h])
 
 Model Variance = [Average Dwell Time] - [Predicted Dwell Time (RF)]
+```
 
-![TradeLogistics](Images/TradeLogistics.png)
+
+![TradeLogistics](images/TradeLogistics.png)
 
 ---
 
