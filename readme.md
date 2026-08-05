@@ -14,6 +14,18 @@
 
 ---
 
+## 📺 Video Walkthrough
+
+Want to see the platform and dashboard in action? Check out the 1-minute video walkthrough of the architecture, pipeline, and Power BI reports:
+
+[![Border Wait Time Analytics Walkthrough](https://img.youtube.com/vi/42VM7YPUdqY/hqdefault.jpg)](https://www.youtube.com/watch?v=42VM7YPUdqY)
+
+*Tip: Click the thumbnail above to watch the silent walkthrough on YouTube.*
+
+---
+
+---
+
 # Project Overview
 
 This project is an end-to-end data pipeline built entirely within Microsoft Fabric. It ingests live traffic telemetry from U.S. Customs and Border Protection (CBP), processes it through a Medallion architecture using PySpark, forecasts future delays using Machine Learning, and serves the insights via a Direct Lake Power BI model. It helps answer practical operational questions:
