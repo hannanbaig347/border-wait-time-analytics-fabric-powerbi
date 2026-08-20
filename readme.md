@@ -5,7 +5,6 @@
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![PySpark](https://img.shields.io/badge/PySpark-E25A1C?style=for-the-badge&logo=apachespark&logoColor=white)
 ![Scikit--learn](https://img.shields.io/badge/scikit--learn-F7931E?style=for-the-badge&logo=scikitlearn&logoColor=white)
-![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 
 
 # Border Wait Time Analytics: A Real-Time Automated Data Platform for U.S. Land Ports
@@ -16,11 +15,15 @@
 
 ## 📺 Video Walkthrough
 
-Want to see the platform and dashboard in action? Check out the 1-minute video walkthrough of the architecture, pipeline, and Power BI reports:
+Want to see the platform and dashboard in action? Check out walkthrough videos of the architecture, pipeline, and Power BI reports:
 
 [![Border Wait Time Analytics Walkthrough](https://img.youtube.com/vi/42VM7YPUdqY/hqdefault.jpg)](https://www.youtube.com/watch?v=42VM7YPUdqY)
 
-*Tip: Click the thumbnail above to watch the silent walkthrough on YouTube.*
+Extended walkthrough video:
+[![Border Wait Time Analytics Walkthrough](https://img.youtube.com/vi/42VM7YPUdqY/hqdefault.jpg)](https://www.youtube.com/watch?v=WxNj1XoCjYY)
+
+
+*Click the thumbnail aboves to watch the walkthrough on YouTube.*
 
 ---
 
