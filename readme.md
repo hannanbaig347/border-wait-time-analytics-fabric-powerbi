@@ -14,16 +14,16 @@
 ---
 
 ## 📺 Video Walkthrough
-
+ 
 Want to see the platform and dashboard in action? Check out walkthrough videos of the architecture, pipeline, and Power BI reports:
-
+ 
 [![Border Wait Time Analytics Walkthrough](https://img.youtube.com/vi/42VM7YPUdqY/hqdefault.jpg)](https://www.youtube.com/watch?v=42VM7YPUdqY)
-
+ 
 Extended walkthrough video:
-[![Border Wait Time Analytics Walkthrough](https://img.youtube.com/vi/42VM7YPUdqY/hqdefault.jpg)](https://www.youtube.com/watch?v=WxNj1XoCjYY)
-
-
-*Click the thumbnail aboves to watch the walkthrough on YouTube.*
+<br>
+[![Border Wait Time Analytics Walkthrough](https://img.youtube.com/vi/WxNj1XoCjYY/hqdefault.jpg)](https://www.youtube.com/watch?v=WxNj1XoCjYY)
+ 
+*Click the thumbnails above to watch the walkthrough on YouTube.*
 
 ---
 
